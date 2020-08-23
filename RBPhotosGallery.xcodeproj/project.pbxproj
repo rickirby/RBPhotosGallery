@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		090E48CC24F2C7BA00233D42 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090E48CB24F2C7BA00233D42 /* RBToolkit.framework */; platformFilter = ios; };
+		090E48CD24F2C7BA00233D42 /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 090E48CB24F2C7BA00233D42 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09C34F8624F29EEB0082E6C1 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C34F7C24F29EEB0082E6C1 /* RBPhotosGallery.framework */; };
 		09C34F8B24F29EEB0082E6C1 /* RBPhotosGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C34F8A24F29EEB0082E6C1 /* RBPhotosGalleryTests.swift */; };
 		09C34F8D24F29EEB0082E6C1 /* RBPhotosGallery.h in Headers */ = {isa = PBXBuildFile; fileRef = 09C34F7F24F29EEB0082E6C1 /* RBPhotosGallery.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -22,7 +24,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		090E48CE24F2C7BA00233D42 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				090E48CD24F2C7BA00233D42 /* RBToolkit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		090E48CB24F2C7BA00233D42 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
 		09C34F7C24F29EEB0082E6C1 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RBPhotosGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C34F7F24F29EEB0082E6C1 /* RBPhotosGallery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBPhotosGallery.h; sourceTree = "<group>"; };
 		09C34F8024F29EEB0082E6C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090E48CC24F2C7BA00233D42 /* RBToolkit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,12 +68,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		090E48CA24F2C7BA00233D42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				090E48CB24F2C7BA00233D42 /* RBToolkit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		09C34F7224F29EEB0082E6C1 = {
 			isa = PBXGroup;
 			children = (
 				09C34F7E24F29EEB0082E6C1 /* RBPhotosGallery */,
 				09C34F8924F29EEB0082E6C1 /* RBPhotosGalleryTests */,
 				09C34F7D24F29EEB0082E6C1 /* Products */,
+				090E48CA24F2C7BA00233D42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,6 +135,7 @@
 				09C34F7824F29EEB0082E6C1 /* Sources */,
 				09C34F7924F29EEB0082E6C1 /* Frameworks */,
 				09C34F7A24F29EEB0082E6C1 /* Resources */,
+				090E48CE24F2C7BA00233D42 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +176,7 @@
 				TargetAttributes = {
 					09C34F7B24F29EEB0082E6C1 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					09C34F8424F29EEB0082E6C1 = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -340,12 +369,17 @@
 		09C34F9124F29EEB0082E6C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RBPhotosGallery/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -356,6 +390,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.modular.RBPhotosGallery;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,12 +399,17 @@
 		09C34F9224F29EEB0082E6C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = RBPhotosGallery/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
