@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0905EF4C24F33FA100CDFCEB /* RBPhotosGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController.swift */; };
 		090E48CC24F2C7BA00233D42 /* RBToolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 090E48CB24F2C7BA00233D42 /* RBToolkit.framework */; platformFilter = ios; };
 		090E48CD24F2C7BA00233D42 /* RBToolkit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 090E48CB24F2C7BA00233D42 /* RBToolkit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		09C34F8624F29EEB0082E6C1 /* RBPhotosGallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09C34F7C24F29EEB0082E6C1 /* RBPhotosGallery.framework */; };
@@ -39,6 +40,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryViewController.swift; sourceTree = "<group>"; };
 		090E48CB24F2C7BA00233D42 /* RBToolkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RBToolkit.framework; path = Carthage/Build/iOS/RBToolkit.framework; sourceTree = "<group>"; };
 		09C34F7C24F29EEB0082E6C1 /* RBPhotosGallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RBPhotosGallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		09C34F7F24F29EEB0082E6C1 /* RBPhotosGallery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RBPhotosGallery.h; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				09C34F7F24F29EEB0082E6C1 /* RBPhotosGallery.h */,
+				0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController.swift */,
 				09C34F8024F29EEB0082E6C1 /* Info.plist */,
 			);
 			path = RBPhotosGallery;
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0905EF4C24F33FA100CDFCEB /* RBPhotosGalleryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +432,7 @@
 		09C34F9424F29EEB0082E6C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				INFOPLIST_FILE = RBPhotosGalleryTests/Info.plist;
@@ -446,6 +451,7 @@
 		09C34F9524F29EEB0082E6C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6NMANHT3A2;
 				INFOPLIST_FILE = RBPhotosGalleryTests/Info.plist;
