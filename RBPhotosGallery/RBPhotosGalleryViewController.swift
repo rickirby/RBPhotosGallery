@@ -137,8 +137,19 @@ open class RBPhotosGalleryViewController: UIViewController {
             }
         }
 	
-	@objc func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
-		print(gestureRecognizer.scale)
+	@objc private func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
+		if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+			scrollView.transform = scrollView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale)
+			gestureRecognizer.scale = 1.0
+		}
+		
+		if gestureRecognizer.state == .ended {
+			if scrollView.frame.width < view.frame.width {
+				UIView.animate(withDuration: 0.2) {
+					self.scrollView.transform = CGAffineTransform(scaleX: 1, y: 1)
+				}
+			}
+		}
 	}
     
     // MARK: - Public Method
