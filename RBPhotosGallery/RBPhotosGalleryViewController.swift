@@ -47,6 +47,8 @@ public class RBPhotosGalleryViewController: UIViewController {
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		configureScrollView()
 	}
     
     public override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +92,10 @@ public class RBPhotosGalleryViewController: UIViewController {
             activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
+	
+	private func configureScrollView() {
+		scrollView.delegate = self
+	}
     
     private func reloadData() {
             let scrollViewWidth = self.scrollView.frame.width
@@ -131,4 +137,12 @@ public class RBPhotosGalleryViewController: UIViewController {
         // Run on main thread
         return []
     }
+}
+
+extension RBPhotosGalleryViewController: UIScrollViewDelegate {
+	public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+		if hasLayout {
+			currentPageIndex = Int(scrollView.contentOffset.x/scrollView.frame.width)
+		}
+	}
 }
