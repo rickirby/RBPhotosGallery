@@ -25,6 +25,12 @@ open class RBPhotosGalleryViewController: UIViewController {
         
         return scrollView
     }()
+	
+	private lazy var pinchGestureRecognizer: UIPinchGestureRecognizer = {
+		let panGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch(gestureRecognizer:)))
+		
+		return panGestureRecognizer
+	}()
     
     // MARK: - Public Properties
 	
@@ -50,6 +56,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 		super.viewDidLoad()
 		
 		configureScrollView()
+		configureGestureRecognizer()
 	}
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +104,11 @@ open class RBPhotosGalleryViewController: UIViewController {
 	private func configureScrollView() {
 		scrollView.delegate = self
 	}
+	
+	private func configureGestureRecognizer() {
+		pinchGestureRecognizer.delegate = self
+		scrollView.addGestureRecognizer(pinchGestureRecognizer)
+	}
     
     private func reloadData() {
             let scrollViewWidth = self.scrollView.frame.width
@@ -124,6 +136,10 @@ open class RBPhotosGalleryViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
             }
         }
+	
+	@objc func handlePinch(gestureRecognizer: UIPinchGestureRecognizer) {
+		print(gestureRecognizer.scale)
+	}
     
     // MARK: - Public Method
     
@@ -147,4 +163,8 @@ extension RBPhotosGalleryViewController: UIScrollViewDelegate {
 			currentPageIndex = Int(scrollView.contentOffset.x/scrollView.frame.width)
 		}
 	}
+}
+
+extension RBPhotosGalleryViewController: UIGestureRecognizerDelegate {
+	
 }
