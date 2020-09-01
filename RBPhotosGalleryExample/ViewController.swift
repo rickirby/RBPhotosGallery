@@ -11,15 +11,62 @@ import RBPhotosGallery
 
 class ViewController: RBPhotosGalleryViewController {
 
+	lazy var barButtonItem0: UIBarButtonItem = {
+		let button = UIBarButtonItem(title: "Scroll0A", style: .plain, target: self, action: #selector(barButtonItem0Tapped))
+		
+		return button
+	}()
+	
+	lazy var barButtonItem1: UIBarButtonItem = {
+		let button = UIBarButtonItem(title: "Scroll1N", style: .plain, target: self, action: #selector(barButtonItem1Tapped))
+		
+		return button
+	}()
+	
+	lazy var barButtonItem2: UIBarButtonItem = {
+		let button = UIBarButtonItem(title: "Scroll2A", style: .plain, target: self, action: #selector(barButtonItem2Tapped))
+		
+		return button
+	}()
+	
+	lazy var barButtonItem3: UIBarButtonItem = {
+		let button = UIBarButtonItem(title: "Scroll3N", style: .plain, target: self, action: #selector(barButtonItem3Tapped))
+		
+		return button
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+		
+		navigationItem.leftBarButtonItems = [barButtonItem0, barButtonItem1]
+		navigationItem.rightBarButtonItems = [barButtonItem3, barButtonItem2]
+		
+		
 	}
 	
 	override func photosGalleryImages() -> [UIImage] {
 		return [#imageLiteral(resourceName: "IndonesiaPhoto2"), #imageLiteral(resourceName: "IndonesiaPhoto3"), #imageLiteral(resourceName: "IndonesiaPhoto4"), #imageLiteral(resourceName: "IndonesiaPhoto1")]
 	}
-
+	
+	@objc func barButtonItem0Tapped() {
+		scrollToPage(page: 0, animated: true)
+	}
+	
+	@objc func barButtonItem1Tapped() {
+		scrollToPage(page: 1, animated: false)
+	}
+	
+	@objc func barButtonItem2Tapped() {
+		scrollToPage(page: 2, animated: true)
+	}
+	
+	@objc func barButtonItem3Tapped() {
+		scrollToPage(page: 3, animated: false)
+	}
+	
+	@objc func toolBarItemTapped() {
+		print()
+	}
 
 }
 
