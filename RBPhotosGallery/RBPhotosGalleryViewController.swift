@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RBToolkit
 
 public class RBPhotosGalleryViewController: UIViewController {
     
@@ -73,7 +72,8 @@ public class RBPhotosGalleryViewController: UIViewController {
         view.backgroundColor = .systemBackground
         
         // Adding all subviews, needs RBToolkit framework
-        view.addAllSubviews(views: [scrollView, activityIndicator])
+		view.addSubview(scrollView)
+		view.addSubview(activityIndicator)
         
         // Configuring autolayout
         NSLayoutConstraint.activate([
