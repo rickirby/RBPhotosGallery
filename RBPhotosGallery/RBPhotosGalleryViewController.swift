@@ -14,6 +14,7 @@ open class RBPhotosGalleryViewController: UIViewController {
     
     var hasLayout = false
     var justMoved = false
+	var isScaled = false
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -144,10 +145,16 @@ open class RBPhotosGalleryViewController: UIViewController {
 		}
 		
 		if gestureRecognizer.state == .ended {
-			if scrollView.frame.width < view.frame.width {
+			if scrollView.frame.width <= view.frame.width {
 				UIView.animate(withDuration: 0.2) {
 					self.scrollView.transform = CGAffineTransform(scaleX: 1, y: 1)
 				}
+				isScaled = false
+				scrollView.isScrollEnabled = true
+			}
+			else {
+				isScaled = true
+				scrollView.isScrollEnabled = false
 			}
 		}
 	}
