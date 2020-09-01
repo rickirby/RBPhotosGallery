@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class RBPhotosGalleryViewController: UIViewController {
+open class RBPhotosGalleryViewController: UIViewController {
     
     // MARK: - Private Properties
     
@@ -39,19 +39,19 @@ public class RBPhotosGalleryViewController: UIViewController {
     
     // MARK: - Life Cycles
     
-    public override func loadView() {
+    open override func loadView() {
         super.loadView()
         
         configureView()
     }
 	
-	public override func viewDidLoad() {
+	open override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		configureScrollView()
 	}
     
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if !justMoved {
@@ -60,12 +60,12 @@ public class RBPhotosGalleryViewController: UIViewController {
         }
     }
     
-    public override func viewWillDisappear(_ animated: Bool) {
+    open override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         justMoved = true
     }
     
-    public override func viewDidLayoutSubviews() {
+    open override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         reloadData()
@@ -133,7 +133,7 @@ public class RBPhotosGalleryViewController: UIViewController {
     
     // Should be overrided
     
-    public func photosGalleryImages() -> [UIImage] {
+    open func photosGalleryImages() -> [UIImage] {
         // Run on main thread
         return []
     }
