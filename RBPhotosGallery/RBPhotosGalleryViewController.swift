@@ -130,6 +130,7 @@ open class RBPhotosGalleryViewController: UIViewController {
     public func scrollToPage(page: Int, animated: Bool) {
         let pageWidth: CGFloat = scrollView.frame.width
         scrollView.scrollRectToVisible(CGRect(x: pageWidth * CGFloat(page), y: 0, width: pageWidth, height: scrollView.frame.height), animated: animated)
+		currentPageIndex = page
     }
     
     // Should be overrided
