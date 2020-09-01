@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RBToolkit
 
 public class RBPhotosGalleryViewController: UIViewController {
     
@@ -72,8 +71,9 @@ public class RBPhotosGalleryViewController: UIViewController {
         // Default view's background color is system color, it support both dark and light mode to be adaptively changed
         view.backgroundColor = .systemBackground
         
-        // Adding all subviews, needs RBToolkit framework
-        view.addAllSubviews(views: [scrollView, activityIndicator])
+        // Adding all subviews
+		view.addSubview(scrollView)
+		view.addSubview(activityIndicator)
         
         // Configuring autolayout
         NSLayoutConstraint.activate([
