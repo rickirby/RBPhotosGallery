@@ -12,7 +12,6 @@ open class RBPhotosGalleryViewController: UIViewController {
     
     // MARK: - Private Properties
     
-    var currentPageIndex: Int = 0
     var hasLayout = false
     var justMoved = false
     
@@ -28,7 +27,9 @@ open class RBPhotosGalleryViewController: UIViewController {
     }()
     
     // MARK: - Public Properties
-    
+	
+	public var currentPageIndex: Int = 0
+	
     public lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         activityIndicator.color = .systemGray

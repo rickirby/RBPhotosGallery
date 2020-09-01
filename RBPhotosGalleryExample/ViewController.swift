@@ -35,13 +35,20 @@ class ViewController: RBPhotosGalleryViewController {
 		return button
 	}()
 	
+	lazy var toolBarItem0: UIBarButtonItem = {
+		let button = UIBarButtonItem(title: "Print", style: .plain, target: self, action: #selector(toolBarItemTapped))
+		
+		return button
+	}()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		navigationItem.leftBarButtonItems = [barButtonItem0, barButtonItem1]
 		navigationItem.rightBarButtonItems = [barButtonItem3, barButtonItem2]
 		
-		
+		navigationController?.setToolbarHidden(false, animated: true)
+		toolbarItems = [toolBarItem0]
 	}
 	
 	override func photosGalleryImages() -> [UIImage] {
@@ -65,7 +72,7 @@ class ViewController: RBPhotosGalleryViewController {
 	}
 	
 	@objc func toolBarItemTapped() {
-		print()
+		print(self.currentPageIndex)
 	}
 
 }
