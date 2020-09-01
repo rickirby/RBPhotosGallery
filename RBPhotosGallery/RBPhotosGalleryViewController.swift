@@ -71,7 +71,7 @@ public class RBPhotosGalleryViewController: UIViewController {
         // Default view's background color is system color, it support both dark and light mode to be adaptively changed
         view.backgroundColor = .systemBackground
         
-        // Adding all subviews, needs RBToolkit framework
+        // Adding all subviews
 		view.addSubview(scrollView)
 		view.addSubview(activityIndicator)
         
