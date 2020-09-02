@@ -30,6 +30,8 @@ open class RBPhotosGalleryViewController: UIViewController {
 	
 	// MARK: - Public Properties
 	
+	public var currentPageIndex: Int = 0
+	
 	// MARK: - Lifecycle
 	
 	open override func loadView() {
