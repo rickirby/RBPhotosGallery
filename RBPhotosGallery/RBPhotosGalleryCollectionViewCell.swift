@@ -87,4 +87,8 @@ extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
             scrollView.contentSize = imageViewSize
         }
     }
+	
+	func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+		print(scale)
+	}
 }
