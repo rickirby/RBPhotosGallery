@@ -17,6 +17,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 		layout.scrollDirection = .horizontal
 		layout.minimumInteritemSpacing = 0
 		layout.minimumLineSpacing = 0
+		layout.itemSize = view.bounds.size
 		
 		return layout
 	}()
@@ -49,12 +50,6 @@ open class RBPhotosGalleryViewController: UIViewController {
 		configureCollectionView()
 	}
 	
-	open override func viewWillLayoutSubviews() {
-		super.viewWillLayoutSubviews()
-		
-		configureCollectionViewCellSize()
-	}
-	
 	// MARK: - Private Method
 	
 	private func configureView() {
@@ -62,10 +57,10 @@ open class RBPhotosGalleryViewController: UIViewController {
 		view.addSubview(collectionView)
 		
 		NSLayoutConstraint.activate([
-			collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-			collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-			collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+			collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+			collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
+			collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
 	}
 	
@@ -74,11 +69,6 @@ open class RBPhotosGalleryViewController: UIViewController {
 		
 		collectionView.delegate = self
 		collectionView.dataSource = self
-	}
-	
-	private func configureCollectionViewCellSize() {
-		collectionView.layoutIfNeeded()
-		collectionViewFlowLayout.itemSize = collectionView.bounds.size
 	}
 	
 	// MARK: - Public Method

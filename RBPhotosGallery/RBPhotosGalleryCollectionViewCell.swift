@@ -61,6 +61,8 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	}
 	
 	private func setZoomScale() {
+		imageView.layoutIfNeeded()
+		scrollView.layoutIfNeeded()
 		let imageViewSize = imageView.bounds.size
 		let scrollViewSize = scrollView.bounds.size
 		let widthScale = scrollViewSize.width / imageViewSize.width
