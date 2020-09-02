@@ -8,6 +8,14 @@
 
 import UIKit
 
+public protocol RBPhotosGalleryViewDelegate {
+	func didZoomToOriginal()
+}
+
+public protocol RBPhotosGalleryViewDataSource {
+	func photosGalleryImages() -> [UIImage]
+}
+
 open class RBPhotosGalleryViewController: UIViewController {
 	
 	// MARK: - Private Properties
@@ -101,12 +109,4 @@ extension RBPhotosGalleryViewController: RBPhotosGalleryCollectionViewCellDelega
 	func didZoomToOriginal() {
 		delegate?.didZoomToOriginal()
 	}
-}
-
-public protocol RBPhotosGalleryViewDelegate {
-	func didZoomToOriginal()
-}
-
-public protocol RBPhotosGalleryViewDataSource {
-	func photosGalleryImages() -> [UIImage]
 }

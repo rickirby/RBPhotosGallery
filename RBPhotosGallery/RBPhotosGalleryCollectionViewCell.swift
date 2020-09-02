@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RBPhotosGalleryCollectionViewCellDelegate {
+	func didZoomToOriginal()
+}
+
 class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	
 	private lazy var scrollView: UIScrollView = {
@@ -95,8 +99,4 @@ extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
 			delegate?.didZoomToOriginal()
 		}
 	}
-}
-
-protocol RBPhotosGalleryCollectionViewCellDelegate {
-	func didZoomToOriginal()
 }
