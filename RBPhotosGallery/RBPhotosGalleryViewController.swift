@@ -12,9 +12,9 @@ open class RBPhotosGalleryViewController: UIViewController {
 	
 	// MARK: - Private Properties
 	
-	var hasLayout = false
-	var justMoved = false
-	var isScaled = false
+	private var hasLayout = false
+	private var justMoved = false
+	private var isScaled = false
 	
 	private lazy var scrollView: UIScrollView = {
 		let scrollView = UIScrollView()
