@@ -8,8 +8,10 @@
 
 import UIKit
 
-public protocol RBPhotosGalleryViewDelegate {
-	func didZoomToOriginal()
+public protocol RBPhotosGalleryViewDelegate {}
+
+extension RBPhotosGalleryViewDelegate {
+	func didZoomToOriginal() {}
 }
 
 public protocol RBPhotosGalleryViewDataSource {
