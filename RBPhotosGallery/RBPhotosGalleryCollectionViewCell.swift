@@ -88,7 +88,14 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
         } else {
-            scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
+			let location = sender.location(in: imageView)
+			let width = self.scrollView.bounds.width / scrollView.maximumZoomScale
+			let height = self.scrollView.bounds.height / scrollView.maximumZoomScale
+			let originX = location.x - (width / 2.0)
+			let originY = location.y - (height / 2.0)
+			
+			let rectToZoom = CGRect(x: originX, y: originY, width: width, height: height)
+			self.scrollView.zoom(to: rectToZoom, animated: true)
         }
 	}
 }
