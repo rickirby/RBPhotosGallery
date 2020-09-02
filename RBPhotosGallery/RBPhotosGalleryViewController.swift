@@ -24,6 +24,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		collectionView.backgroundColor = .systemBackground
 		collectionView.showsHorizontalScrollIndicator = false
+		collectionView.isPagingEnabled = true
 		
 		return collectionView
 	}()
