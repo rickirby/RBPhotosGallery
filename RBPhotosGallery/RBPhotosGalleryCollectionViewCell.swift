@@ -57,10 +57,6 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	private func configureImage(image: UIImage?) {
 		imageView.image = image
 		imageView.sizeToFit()
-		setZoomScale()
-	}
-	
-	private func setZoomScale() {
 		imageView.layoutIfNeeded()
 		scrollView.layoutIfNeeded()
 		let imageViewSize = imageView.bounds.size
@@ -79,7 +75,6 @@ extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
     }
 
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
-
         let imageViewSize = imageView.frame.size
         let scrollViewSize = scrollView.bounds.size
 
@@ -87,10 +82,8 @@ extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
         let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
 
         if verticalPadding >= 0 {
-            // Center the image on screen
             scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
         } else {
-            // Limit the image panning to the screen bounds
             scrollView.contentSize = imageViewSize
         }
     }
