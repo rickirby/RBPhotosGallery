@@ -32,6 +32,9 @@ open class RBPhotosGalleryViewController: UIViewController {
 		return collectionView
 	}()
 	
+	private var delegate: RBPhotosGalleryViewDelegate?
+	private var datasource: RBPhotosGalleryViewDataSource?
+	
 	// MARK: - Public Properties
 	
 	public var currentPageIndex: Int = 0
@@ -47,6 +50,8 @@ open class RBPhotosGalleryViewController: UIViewController {
 	open override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		delegate = self as? RBPhotosGalleryViewDelegate
+		datasource = self as? RBPhotosGalleryViewDataSource
 		configureCollectionView()
 	}
 	
@@ -72,27 +77,36 @@ open class RBPhotosGalleryViewController: UIViewController {
 	}
 	
 	// MARK: - Public Method
-	
-	// MARK: - Open Method
-	// Should be overrided
-	
-	open func photosGalleryImages() -> [UIImage] {
-		return []
-	}
+
 }
 
 extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return photosGalleryImages().count
+		return datasource?.photosGalleryImages().count ?? 0
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosGalleryCell", for: indexPath) as? RBPhotosGalleryCollectionViewCell else { return UICollectionViewCell() }
-		cell.image = photosGalleryImages()[indexPath.row]
+		guard let photos = datasource?.photosGalleryImages(), let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosGalleryCell", for: indexPath) as? RBPhotosGalleryCollectionViewCell else { return UICollectionViewCell() }
+		cell.image = photos[indexPath.row]
+		cell.delegate = self
 		
 		return cell
 	}
+}
 
+extension RBPhotosGalleryViewController: RBPhotosGalleryCollectionViewCellDelegate {
+	
+	func didZoomToOriginal() {
+		delegate?.didZoomToOriginal()
+	}
+}
+
+public protocol RBPhotosGalleryViewDelegate {
+	func didZoomToOriginal()
+}
+
+public protocol RBPhotosGalleryViewDataSource {
+	func photosGalleryImages() -> [UIImage]
 }

@@ -30,6 +30,8 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		}
 	}
 	
+	var delegate: RBPhotosGalleryCollectionViewCellDelegate?
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -89,6 +91,12 @@ extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
     }
 	
 	func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-		print(scale)
+		if scale == scrollView.minimumZoomScale {
+			delegate?.didZoomToOriginal()
+		}
 	}
+}
+
+protocol RBPhotosGalleryCollectionViewCellDelegate {
+	func didZoomToOriginal()
 }
