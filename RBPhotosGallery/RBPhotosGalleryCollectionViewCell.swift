@@ -10,20 +10,26 @@ import UIKit
 
 class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	
-	lazy var scrollView: UIScrollView = {
+	private lazy var scrollView: UIScrollView = {
 		let scrollView = UIScrollView()
 		scrollView.translatesAutoresizingMaskIntoConstraints = false
 		
 		return scrollView
 	}()
 	
-	lazy var imageView: UIImageView = {
+	private lazy var imageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.contentMode = .scaleAspectFit
 		
 		return imageView
 	}()
+	
+	var image: UIImage? {
+		didSet {
+			configureImage(image: image)
+		}
+	}
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -46,5 +52,9 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func configureImage(image: UIImage?) {
+		imageView.image = image
 	}
 }
