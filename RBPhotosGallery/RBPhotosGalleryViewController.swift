@@ -78,6 +78,13 @@ open class RBPhotosGalleryViewController: UIViewController {
 	}
 	
 	// MARK: - Public Method
+	
+	// MARK: - Open Method
+	// Should be overrided
+	
+	open func photosGalleryImages() -> [UIImage] {
+		return []
+	}
 }
 
 extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
