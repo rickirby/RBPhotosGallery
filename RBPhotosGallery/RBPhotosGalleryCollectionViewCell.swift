@@ -11,6 +11,8 @@ import UIKit
 protocol RBPhotosGalleryCollectionViewCellDelegate {
 	func didZoomToOriginal()
 	func didZoomToScaled()
+	func didSingleTap()
+	func didDoubleTap()
 }
 
 class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
@@ -27,6 +29,12 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		
 		return imageView
+	}()
+	
+	private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+		
+		return tapRecognizer
 	}()
 	
 	private lazy var doubleTapGestureRecognizer: UITapGestureRecognizer = {
@@ -51,6 +59,7 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		scrollView.addSubview(imageView)
 		scrollView.delegate = self
 		
+		self.addGestureRecognizer(singleTapGestureRecognizer)
 		self.addGestureRecognizer(doubleTapGestureRecognizer)
 		
 		NSLayoutConstraint.activate([
@@ -84,7 +93,12 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
 	}
 	
+	@objc private func singleTapHandler(_ sender: UITapGestureRecognizer) {
+		delegate?.didSingleTap()
+	}
+	
 	@objc private func doubleTapHandler(_ sender: UITapGestureRecognizer) {
+		delegate?.didDoubleTap()
 		if (scrollView.zoomScale > scrollView.minimumZoomScale) {
             scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
         } else {
