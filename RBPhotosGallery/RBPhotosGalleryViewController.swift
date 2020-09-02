@@ -9,6 +9,16 @@
 import UIKit
 
 public protocol RBPhotosGalleryViewDelegate {
+	func didSingleTap()
+	func didDoubleTap()
+}
+
+public extension RBPhotosGalleryViewDelegate {
+	func didSingleTap() {}
+	func didDoubleTap() {}
+}
+
+public extension RBPhotosGalleryViewDelegate {
 	
 }
 
@@ -112,5 +122,13 @@ extension RBPhotosGalleryViewController: RBPhotosGalleryCollectionViewCellDelega
 	
 	func didZoomToScaled() {
 		collectionView.isScrollEnabled = false
+	}
+	
+	func didSingleTap() {
+		delegate?.didSingleTap()
+	}
+	
+	func didDoubleTap() {
+		delegate?.didDoubleTap()
 	}
 }

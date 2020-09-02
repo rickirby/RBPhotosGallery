@@ -11,6 +11,8 @@ import UIKit
 protocol RBPhotosGalleryCollectionViewCellDelegate {
 	func didZoomToOriginal()
 	func didZoomToScaled()
+	func didSingleTap()
+	func didDoubleTap()
 }
 
 class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
@@ -29,6 +31,19 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		return imageView
 	}()
 	
+	private lazy var singleTapGestureRecognizer: UITapGestureRecognizer = {
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(singleTapHandler(_:)))
+		
+		return tapRecognizer
+	}()
+	
+	private lazy var doubleTapGestureRecognizer: UITapGestureRecognizer = {
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapHandler(_:)))
+		tapRecognizer.numberOfTapsRequired = 2
+		
+		return tapRecognizer
+	}()
+	
 	var image: UIImage? {
 		didSet {
 			configureImage(image: image)
@@ -43,6 +58,9 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		contentView.addSubview(scrollView)
 		scrollView.addSubview(imageView)
 		scrollView.delegate = self
+		
+		self.addGestureRecognizer(singleTapGestureRecognizer)
+		self.addGestureRecognizer(doubleTapGestureRecognizer)
 		
 		NSLayoutConstraint.activate([
 			scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -73,6 +91,26 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		
 		scrollView.minimumZoomScale = min(widthScale, heightScale)
 		scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+	}
+	
+	@objc private func singleTapHandler(_ sender: UITapGestureRecognizer) {
+		delegate?.didSingleTap()
+	}
+	
+	@objc private func doubleTapHandler(_ sender: UITapGestureRecognizer) {
+		delegate?.didDoubleTap()
+		if (scrollView.zoomScale > scrollView.minimumZoomScale) {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        } else {
+			let location = sender.location(in: imageView)
+			let width = self.scrollView.bounds.width / scrollView.maximumZoomScale
+			let height = self.scrollView.bounds.height / scrollView.maximumZoomScale
+			let originX = location.x - (width / 2.0)
+			let originY = location.y - (height / 2.0)
+			
+			let rectToZoom = CGRect(x: originX, y: originY, width: width, height: height)
+			self.scrollView.zoom(to: rectToZoom, animated: true)
+        }
 	}
 }
 
