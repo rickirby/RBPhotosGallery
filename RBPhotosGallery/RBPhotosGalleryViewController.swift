@@ -15,6 +15,8 @@ open class RBPhotosGalleryViewController: UIViewController {
 	private lazy var collectionViewFlowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .horizontal
+		layout.minimumInteritemSpacing = 0
+		layout.minimumLineSpacing = 0
 		
 		return layout
 	}()

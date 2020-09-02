@@ -20,7 +20,6 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	private lazy var imageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
-		imageView.contentMode = .scaleAspectFit
 		
 		return imageView
 	}()
@@ -36,6 +35,7 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		
 		contentView.addSubview(scrollView)
 		scrollView.addSubview(imageView)
+		scrollView.delegate = self
 		
 		NSLayoutConstraint.activate([
 			scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -56,5 +56,40 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	
 	private func configureImage(image: UIImage?) {
 		imageView.image = image
+		imageView.sizeToFit()
+		setZoomScale()
 	}
+	
+	private func setZoomScale() {
+		let imageViewSize = imageView.bounds.size
+		let scrollViewSize = scrollView.bounds.size
+		let widthScale = scrollViewSize.width / imageViewSize.width
+		let heightScale = scrollViewSize.height / imageViewSize.height
+		
+		scrollView.minimumZoomScale = min(widthScale, heightScale)
+		scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+	}
+}
+
+extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
+	public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
+    }
+
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+
+        let imageViewSize = imageView.frame.size
+        let scrollViewSize = scrollView.bounds.size
+
+        let verticalPadding = imageViewSize.height < scrollViewSize.height ? (scrollViewSize.height - imageViewSize.height) / 2 : 0
+        let horizontalPadding = imageViewSize.width < scrollViewSize.width ? (scrollViewSize.width - imageViewSize.width) / 2 : 0
+
+        if verticalPadding >= 0 {
+            // Center the image on screen
+            scrollView.contentInset = UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+        } else {
+            // Limit the image panning to the screen bounds
+            scrollView.contentSize = imageViewSize
+        }
+    }
 }
