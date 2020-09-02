@@ -57,7 +57,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 		super.viewDidLoad()
 		
 		configureScrollView()
-		configureGestureRecognizer()
+//		configureGestureRecognizer()
 	}
 	
 	open override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +104,8 @@ open class RBPhotosGalleryViewController: UIViewController {
 	
 	private func configureScrollView() {
 		scrollView.delegate = self
+		scrollView.minimumZoomScale = 1.0
+		scrollView.maximumZoomScale = 6.0
 	}
 	
 	private func configureGestureRecognizer() {
@@ -181,6 +183,10 @@ extension RBPhotosGalleryViewController: UIScrollViewDelegate {
 		if hasLayout {
 			currentPageIndex = Int(scrollView.contentOffset.x/scrollView.frame.width)
 		}
+	}
+	
+	public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+		return scrollView.subviews[currentPageIndex]
 	}
 }
 
