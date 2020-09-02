@@ -38,17 +38,29 @@ open class RBPhotosGalleryViewController: UIViewController {
 		configureView()
 	}
 	
+	open override func viewWillLayoutSubviews() {
+		super.viewWillLayoutSubviews()
+		
+		configureCollectionViewCellSize()
+	}
+	
 	// MARK: - Private Method
 	
 	private func configureView() {
+		view.backgroundColor = .systemBackground
 		view.addSubview(collectionView)
 		
 		NSLayoutConstraint.activate([
-			collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-			collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-			collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+			collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+			collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+			collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
+	}
+	
+	private func configureCollectionViewCellSize() {
+		collectionView.layoutIfNeeded()
+		collectionViewFlowLayout.itemSize = collectionView.bounds.size
 	}
 	
 	// MARK: - Public Method
