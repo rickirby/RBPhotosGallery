@@ -29,6 +29,13 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		return imageView
 	}()
 	
+	private lazy var doubleTapGestureRecognizer: UITapGestureRecognizer = {
+		let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapHandler(_:)))
+		tapRecognizer.numberOfTapsRequired = 2
+		
+		return tapRecognizer
+	}()
+	
 	var image: UIImage? {
 		didSet {
 			configureImage(image: image)
@@ -43,6 +50,8 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		contentView.addSubview(scrollView)
 		scrollView.addSubview(imageView)
 		scrollView.delegate = self
+		
+		self.addGestureRecognizer(doubleTapGestureRecognizer)
 		
 		NSLayoutConstraint.activate([
 			scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -73,6 +82,14 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		
 		scrollView.minimumZoomScale = min(widthScale, heightScale)
 		scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+	}
+	
+	@objc private func doubleTapHandler(_ sender: UITapGestureRecognizer) {
+		if (scrollView.zoomScale > scrollView.minimumZoomScale) {
+            scrollView.setZoomScale(scrollView.minimumZoomScale, animated: true)
+        } else {
+            scrollView.setZoomScale(scrollView.maximumZoomScale, animated: true)
+        }
 	}
 }
 
