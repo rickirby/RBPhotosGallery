@@ -11,10 +11,6 @@ import RBPhotosGallery
 
 class TryViewController: RBPhotosGalleryViewController, RBPhotosGalleryViewDelegate, RBPhotosGalleryViewDataSource {
 	
-	func didZoomToOriginal() {
-		print("TES")
-	}
-	
 	func photosGalleryImages() -> [UIImage] {
 		return [#imageLiteral(resourceName: "IndonesiaPhoto2"), #imageLiteral(resourceName: "IndonesiaPhoto3"), #imageLiteral(resourceName: "IndonesiaPhoto4"), #imageLiteral(resourceName: "IndonesiaPhoto1"), #imageLiteral(resourceName: "IndonesiaPhoto5")]
 	}

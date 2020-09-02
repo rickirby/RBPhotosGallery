@@ -10,6 +10,7 @@ import UIKit
 
 protocol RBPhotosGalleryCollectionViewCellDelegate {
 	func didZoomToOriginal()
+	func didZoomToScaled()
 }
 
 class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
@@ -97,6 +98,8 @@ extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
 	func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
 		if scale == scrollView.minimumZoomScale {
 			delegate?.didZoomToOriginal()
+		} else {
+			delegate?.didZoomToScaled()
 		}
 	}
 }

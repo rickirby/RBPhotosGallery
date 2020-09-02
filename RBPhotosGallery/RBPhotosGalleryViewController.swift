@@ -8,10 +8,8 @@
 
 import UIKit
 
-public protocol RBPhotosGalleryViewDelegate {}
-
-extension RBPhotosGalleryViewDelegate {
-	func didZoomToOriginal() {}
+public protocol RBPhotosGalleryViewDelegate {
+	
 }
 
 public protocol RBPhotosGalleryViewDataSource {
@@ -109,6 +107,10 @@ extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionV
 extension RBPhotosGalleryViewController: RBPhotosGalleryCollectionViewCellDelegate {
 	
 	func didZoomToOriginal() {
-		delegate?.didZoomToOriginal()
+		collectionView.isScrollEnabled = true
+	}
+	
+	func didZoomToScaled() {
+		collectionView.isScrollEnabled = false
 	}
 }
