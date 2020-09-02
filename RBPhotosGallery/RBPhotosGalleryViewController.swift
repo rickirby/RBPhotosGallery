@@ -68,6 +68,8 @@ open class RBPhotosGalleryViewController: UIViewController {
 	}
 	
 	private func configureCollectionView() {
+		collectionView.register(RBPhotosGalleryCollectionViewCell.self, forCellWithReuseIdentifier: "PhotosGalleryCell")
+		
 		collectionView.delegate = self
 		collectionView.dataSource = self
 	}
@@ -90,11 +92,15 @@ open class RBPhotosGalleryViewController: UIViewController {
 extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 	
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 0
+		return photosGalleryImages().count
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		return UICollectionViewCell()
+		
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotosGalleryCell", for: indexPath) as? RBPhotosGalleryCollectionViewCell else { return UICollectionViewCell() }
+		cell.image = photosGalleryImages()[indexPath.row]
+		
+		return cell
 	}
 
 }
