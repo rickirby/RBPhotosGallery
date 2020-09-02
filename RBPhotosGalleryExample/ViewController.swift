@@ -10,7 +10,7 @@ import UIKit
 import RBPhotosGallery
 
 class ViewController: RBPhotosGalleryViewController {
-
+	
 	lazy var barButtonItem0: UIBarButtonItem = {
 		let button = UIBarButtonItem(title: "Scroll0A", style: .plain, target: self, action: #selector(barButtonItem0Tapped))
 		
@@ -74,6 +74,6 @@ class ViewController: RBPhotosGalleryViewController {
 	@objc func toolBarItemTapped() {
 		print(self.currentPageIndex)
 	}
-
+	
 }
 
