@@ -38,6 +38,12 @@ open class RBPhotosGalleryViewController: UIViewController {
 		configureView()
 	}
 	
+	open override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureCollectionView()
+	}
+	
 	open override func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 		
@@ -58,10 +64,27 @@ open class RBPhotosGalleryViewController: UIViewController {
 		])
 	}
 	
+	private func configureCollectionView() {
+		collectionView.delegate = self
+		collectionView.dataSource = self
+	}
+	
 	private func configureCollectionViewCellSize() {
 		collectionView.layoutIfNeeded()
 		collectionViewFlowLayout.itemSize = collectionView.bounds.size
 	}
 	
 	// MARK: - Public Method
+}
+
+extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+	
+	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 0
+	}
+	
+	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		return UICollectionViewCell()
+	}
+
 }
