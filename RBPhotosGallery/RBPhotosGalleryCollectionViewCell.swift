@@ -17,6 +17,8 @@ protocol RBPhotosGalleryCollectionViewCellDelegate {
 
 class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	
+	// MARK: - Private Properties
+	
 	private lazy var scrollView: UIScrollView = {
 		let scrollView = UIScrollView()
 		scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +48,8 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		return tapRecognizer
 	}()
 	
+	// MARK: - Public Method
+	
 	var image: UIImage? {
 		didSet {
 			configureImage(image: image)
@@ -54,9 +58,21 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 	
 	var delegate: RBPhotosGalleryCollectionViewCellDelegate?
 	
+	// MARK: - Life Cycle
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
+		configureView()
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+	
+	// MARK: - Private Method
+	
+	private func configureView() {
 		contentView.addSubview(scrollView)
 		scrollView.addSubview(imageView)
 		scrollView.delegate = self
@@ -75,10 +91,6 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 			imageView.rightAnchor.constraint(equalTo: scrollView.rightAnchor),
 			imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
 		])
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
 	}
 	
 	private func configureImage(image: UIImage?) {
@@ -117,11 +129,11 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 }
 
 extension RBPhotosGalleryCollectionViewCell: UIScrollViewDelegate {
-	public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+	func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
 
-    public func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         let imageViewSize = imageView.frame.size
         let scrollViewSize = scrollView.bounds.size
 
