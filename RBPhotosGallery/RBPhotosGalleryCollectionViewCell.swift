@@ -66,8 +66,8 @@ class RBPhotosGalleryCollectionViewCell: UICollectionViewCell {
 		
 		NSLayoutConstraint.activate([
 			scrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
-			scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
-			scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+			scrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 5),
+			scrollView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -5),
 			scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 			
 			imageView.topAnchor.constraint(equalTo: scrollView.topAnchor),

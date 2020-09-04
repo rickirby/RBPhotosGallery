@@ -35,7 +35,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 		layout.scrollDirection = .horizontal
 		layout.minimumInteritemSpacing = 0
 		layout.minimumLineSpacing = 0
-		layout.itemSize = view.bounds.size
+		layout.itemSize = CGSize(width: view.bounds.size.width + 10, height: view.bounds.size.height)
 		
 		return layout
 	}()
@@ -81,8 +81,8 @@ open class RBPhotosGalleryViewController: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-			collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-			collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
+			collectionView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: -5),
+			collectionView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 5),
 			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
 	}
