@@ -18,10 +18,6 @@ public extension RBPhotosGalleryViewDelegate {
 	func didDoubleTap() {}
 }
 
-public extension RBPhotosGalleryViewDelegate {
-	
-}
-
 public protocol RBPhotosGalleryViewDataSource {
 	func photosGalleryImages() -> [UIImage]
 }
