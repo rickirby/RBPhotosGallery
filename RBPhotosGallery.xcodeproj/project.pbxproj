@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0905EF4C24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift */; };
 		09553C1924FF8916003C3578 /* RBPhotosGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09553C1824FF8916003C3578 /* RBPhotosGalleryViewController.swift */; };
+		09553C1B24FF8FAD003C3578 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09553C1A24FF8FAD003C3578 /* TryViewController.swift */; };
+		09553C1F24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09553C1E24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift */; };
 		0967A87B24FE882E00660111 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967A87A24FE882E00660111 /* AppDelegate.swift */; };
 		0967A87D24FE882E00660111 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967A87C24FE882E00660111 /* SceneDelegate.swift */; };
 		0967A87F24FE882E00660111 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967A87E24FE882E00660111 /* ViewController.swift */; };
@@ -32,6 +34,8 @@
 /* Begin PBXFileReference section */
 		0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryViewController1.swift; sourceTree = "<group>"; };
 		09553C1824FF8916003C3578 /* RBPhotosGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryViewController.swift; sourceTree = "<group>"; };
+		09553C1A24FF8FAD003C3578 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
+		09553C1E24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0967A87824FE882E00660111 /* RBPhotosGalleryExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RBPhotosGalleryExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0967A87A24FE882E00660111 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0967A87C24FE882E00660111 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 				0967A87A24FE882E00660111 /* AppDelegate.swift */,
 				0967A87C24FE882E00660111 /* SceneDelegate.swift */,
 				0967A87E24FE882E00660111 /* ViewController.swift */,
+				09553C1A24FF8FAD003C3578 /* TryViewController.swift */,
 				0967A88324FE882F00660111 /* Assets.xcassets */,
 				0967A88524FE882F00660111 /* LaunchScreen.storyboard */,
 				0967A88824FE882F00660111 /* Info.plist */,
@@ -120,6 +125,7 @@
 				09C34F7F24F29EEB0082E6C1 /* RBPhotosGallery.h */,
 				0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift */,
 				09553C1824FF8916003C3578 /* RBPhotosGalleryViewController.swift */,
+				09553C1E24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift */,
 				09C34F8024F29EEB0082E6C1 /* Info.plist */,
 			);
 			path = RBPhotosGallery;
@@ -274,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09553C1B24FF8FAD003C3578 /* TryViewController.swift in Sources */,
 				0967A87F24FE882E00660111 /* ViewController.swift in Sources */,
 				0967A87B24FE882E00660111 /* AppDelegate.swift in Sources */,
 				0967A87D24FE882E00660111 /* SceneDelegate.swift in Sources */,
@@ -285,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09553C1924FF8916003C3578 /* RBPhotosGalleryViewController.swift in Sources */,
+				09553C1F24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift in Sources */,
 				0905EF4C24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,10 +338,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.core.RBPhotosGalleryExample;
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.RBPhotosGalleryExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -348,10 +356,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.core.RBPhotosGalleryExample;
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.apps.RBPhotosGalleryExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -496,12 +504,13 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.modular.RBPhotosGallery;
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.core.RBPhotosGallery;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -526,11 +535,12 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.modular.RBPhotosGallery;
+				PRODUCT_BUNDLE_IDENTIFIER = id.erbe.core.RBPhotosGallery;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
