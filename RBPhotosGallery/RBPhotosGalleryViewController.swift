@@ -95,6 +95,11 @@ open class RBPhotosGalleryViewController: UIViewController {
 	public func scrollToPhotos(index: Int, animated: Bool = true) {
 		collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: animated)
 	}
+	
+	public func reloadPhotosData() {
+		// Main thread only
+		collectionView.reloadData()
+	}
 
 }
 
