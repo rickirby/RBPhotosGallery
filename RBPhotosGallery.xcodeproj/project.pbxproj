@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0905EF4C24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift */; };
 		09553C1924FF8916003C3578 /* RBPhotosGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09553C1824FF8916003C3578 /* RBPhotosGalleryViewController.swift */; };
 		09553C1B24FF8FAD003C3578 /* TryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09553C1A24FF8FAD003C3578 /* TryViewController.swift */; };
 		09553C1F24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09553C1E24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift */; };
@@ -32,7 +31,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryViewController1.swift; sourceTree = "<group>"; };
 		09553C1824FF8916003C3578 /* RBPhotosGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryViewController.swift; sourceTree = "<group>"; };
 		09553C1A24FF8FAD003C3578 /* TryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TryViewController.swift; sourceTree = "<group>"; };
 		09553C1E24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RBPhotosGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				09C34F7F24F29EEB0082E6C1 /* RBPhotosGallery.h */,
-				0905EF4B24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift */,
 				09553C1824FF8916003C3578 /* RBPhotosGalleryViewController.swift */,
 				09553C1E24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift */,
 				09C34F8024F29EEB0082E6C1 /* Info.plist */,
@@ -293,7 +290,6 @@
 			files = (
 				09553C1924FF8916003C3578 /* RBPhotosGalleryViewController.swift in Sources */,
 				09553C1F24FF94B9003C3578 /* RBPhotosGalleryCollectionViewCell.swift in Sources */,
-				0905EF4C24F33FA100CDFCEB /* RBPhotosGalleryViewController1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
