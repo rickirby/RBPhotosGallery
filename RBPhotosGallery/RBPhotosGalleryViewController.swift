@@ -94,6 +94,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 	
 	public func scrollToPhotos(index: Int, animated: Bool = true) {
 		collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: animated)
+		currentPageIndex = index
 	}
 	
 	public func reloadPhotosData() {
@@ -103,7 +104,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 
 }
 
-extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
 	
 	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return datasource?.photosGalleryImages().count ?? 0
@@ -116,6 +117,10 @@ extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionV
 		cell.delegate = self
 		
 		return cell
+	}
+	
+	public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+		currentPageIndex = Int(scrollView.contentOffset.x/scrollView.frame.width)
 	}
 }
 
