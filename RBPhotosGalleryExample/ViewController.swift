@@ -23,10 +23,4 @@ class ViewController: RBPhotosGalleryViewController, RBPhotosGalleryViewDelegate
 	func didDoubleTap() {
 		print("Double Tap")
 	}
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		
-		view.backgroundColor = .orange
-	}
 }
