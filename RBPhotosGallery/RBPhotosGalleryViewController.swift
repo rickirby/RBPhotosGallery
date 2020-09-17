@@ -39,7 +39,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 	private lazy var collectionView: UICollectionView = {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewFlowLayout)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
-		collectionView.backgroundColor = .systemBackground
+		collectionView.backgroundColor = .clear
 		collectionView.showsHorizontalScrollIndicator = false
 		collectionView.isPagingEnabled = true
 		
