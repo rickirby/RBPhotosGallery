@@ -17,6 +17,7 @@ class ViewController: RBPhotosGalleryViewController, RBPhotosGalleryViewDelegate
 	
 	func didSingleTap() {
 		print("Single Tap")
+		print(currentPageIndex)
 	}
 	
 	func didDoubleTap() {
