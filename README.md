@@ -9,4 +9,4 @@ git "git@bitbucket.org:rb-scando/rb_photogallery_core_ios.git" == *version-numbe
 Then "carthage update --use-ssh"
 
 ### Current version:
-0.0.2
+0.0.3
