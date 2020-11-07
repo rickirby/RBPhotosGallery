@@ -42,6 +42,7 @@ open class RBPhotosGalleryViewController: UIViewController {
 		collectionView.backgroundColor = .clear
 		collectionView.showsHorizontalScrollIndicator = false
 		collectionView.isPagingEnabled = true
+		collectionView.alwaysBounceHorizontal = true
 		
 		return collectionView
 	}()
