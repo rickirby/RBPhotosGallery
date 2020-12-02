@@ -94,9 +94,9 @@ open class RBPhotosGalleryViewController: UIViewController {
 	// MARK: - Public Method
 	
 	public func scrollToPhotos(index: Int, animated: Bool = true) {
-		let itemWidth = view.bounds.width + 10
-		let itemHeight = view.bounds.height
-		collectionView.setContentOffset(CGPoint(x: CGFloat(index) * itemWidth, y: itemHeight / 2), animated: animated)
+		collectionView.isPagingEnabled = false
+		collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .centeredHorizontally, animated: animated)
+		collectionView.isPagingEnabled = true
 		currentPageIndex = index
 	}
 	
