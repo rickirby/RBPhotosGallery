@@ -11,11 +11,13 @@ import UIKit
 public protocol RBPhotosGalleryViewDelegate {
 	func didSingleTap()
 	func didDoubleTap()
+	func didEndScrolling(_ scrollView: UIScrollView)
 }
 
 public extension RBPhotosGalleryViewDelegate {
 	func didSingleTap() {}
 	func didDoubleTap() {}
+	func didEndScrolling(_ scrollView: UIScrollView) {}
 }
 
 public protocol RBPhotosGalleryViewDataSource {
@@ -124,6 +126,7 @@ extension RBPhotosGalleryViewController: UICollectionViewDelegate, UICollectionV
 	
 	public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 		currentPageIndex = Int(scrollView.contentOffset.x/scrollView.frame.width)
+		delegate?.didEndScrolling(scrollView)
 	}
 }
 
