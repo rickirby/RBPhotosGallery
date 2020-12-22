@@ -9,7 +9,7 @@ git "git@bitbucket.org:rb-scando/rb_photogallery_core_ios.git" == *version-numbe
 Then "carthage update --use-ssh"
 
 ### Current version:
-0.0.5
+0.0.6
 
 ### Change Log
 --- 0.0.1
@@ -29,3 +29,6 @@ Then "carthage update --use-ssh"
 --- 0.0.5
     * Fix issue random scroll on 0.0.4 when user done editing document and back to open Gallery
     * Fix with workaround for iOS 14 which scrollToItems not working with isPagingEnabled is true
+
+--- 0.0.6
+    * Add new delegate method -> didEndScrolling(_:) to notify that scrollview done scrolling
